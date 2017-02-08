@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1><a>Edit your profile</a></h1>
+<hr>
+<form action="" method="POST" name="edit" enctype=multipart/form-data>
+  {{ form.hidden_tag() }}
+  <p>
+    <strong>Change image</strong>
+    <input type=file name=file><br>
+  </p>
+  <p>
+    <strong>Change email</strong>
+    <br> {{ form.email}}
+    <!--input type="checkbox" name="email" value="Remain email" checked--><br> {% for error in form.email.errors %}
+    <span style="color: red;">[{{ error }}]</span> {% endfor %}<br>
+  </p>
+  <p><strong>Change password</strong>
+    <br> {{ form.password}}<br> {% for error in form.password.errors %}
+    <span style="color: red;">[{{ error }}]</span> {% endfor %}<br>
+  </p>
+  <p>
+    <strong>Confirm password</strong>
+    <br> {{ form.confirm}}<br> {% for error in form.confirm.errors %}
+    <span style="color: red;">[{{ error }}]</span> {% endfor %}<br>
+  </p>
+  <p><input type="submit" class="btn btn-default" value="Save Changes"> &nbsp;&nbsp;
+    <input type="button" class="btn btn-default" value="Back" onClick="history.go(-1)"></p>
+</form>
+{% endblock %}

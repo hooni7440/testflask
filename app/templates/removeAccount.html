@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1><a>Remove Account</a></h1>
+<hr>
+<form action="" method="POST" name="removing" enctype=multipart/form-data>
+    {{ form.hidden_tag() }}
+    <h2><strong>Are you sure?</strong></h2>
+    <p><h2>yes&nbsp; {{ form.accept_removing}}<br> {% for error in form.accept_removing.errors %}
+        <span style="color: red;">[{{ error }}]</span> {% endfor %}</h2><br>
+    </p>
+    <p>
+        <input type=submit class="btn btn-default" value="Remove now"> &nbsp;
+        <input type="button" class="btn btn-default" value="Back" onClick="history.go(-1)">
+    </p>
+</form>
+{% endblock %}

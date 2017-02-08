@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+{% block content %}
+    {% with messages = get_flashed_messages() %} 
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <div class="panel panel-danger">
+            <div class="panel-heading">Out of existence</div>
+            <div class="panel-body">{{ message }}</div>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %} 
+    {% endwith %} 
+<div class="col-sm-12">
+    <h1>{{ title }}</h1>
+    <hr> 
+    {% if img == "." %}
+    <p>
+        <font size="5">{{ content }}</font>
+    </p>
+    <p>Posted by {{ username }}</p>
+    <input type="button" class="btn btn-default" value="Make a new post" onClick="location.href='/makePost'"> &nbsp;&nbsp;
+    <input type="button" class="btn btn-default" value="Remove this post" onClick="location.href='/{{ username }}_{{ title }}_removeIt'">    &nbsp;&nbsp;
+    <input type="button" class="btn btn-default" value="Back" onClick="location.href='/allPost'"> 
+    {% else %}
+    <img src="{{ img }}">
+    <br>
+    <br>
+    <p>
+        <font size="5">{{ content }}</font>
+    </p>
+    <p>Posted by {{ username }}&nbsp; <i>Post on: {{ time }}</i></p>
+    <input type="button" class="btn btn-default" value="Make a new post" onClick="location.href='/makePost'"> &nbsp;&nbsp;
+    <input type="button" class="btn btn-default" value="Remove this post" onClick="location.href='/{{ username }}_{{ title }}_removeIt'">    &nbsp;&nbsp;
+    <input type="button" class="btn btn-default" value="Back" onClick="location.href='/allPost'">
+    <br> 
+    {% endif %}
+    <hr>
+</div>
+{% endblock %}

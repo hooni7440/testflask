@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method=post class="form-horizontal">
+    <h1><a>Sign in to Blog</a></h1>
+    <hr> {% with messages = get_flashed_messages() %} 
+    {% if messages %}
+    <ul>
+        {% for message in messages %} 
+            {% if message[2]=='a' %}
+            <div class="alert alert-success">
+                <strong>Succeed!!!</strong> {{ message }}
+            </div>
+            {% elif message[0]=='R' or message[0]=='Y' %}
+            <div class="alert alert-info">
+                <strong>--Info--</strong> {{ message }}
+            </div>
+            {% else %}
+            <div class="alert alert-danger">
+                <strong>Error!!!</strong> {{ message }}
+            </div>
+            {% endif %} 
+        {% endfor %}
+    </ul>
+    {% endif %} 
+    {% endwith %}
+    <div class="control-group">
+        <div class="controls">
+            <input type="text" id="username" name="username" class="input-xlarge" placeholder="Enter Username" required>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <div class="controls">
+            <input type="password" id="password" name="password" class="input-xlarge" placeholder="Enter Password" required>
+        </div>
+    </div>
+    <br>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-default">Signin</button> &nbsp;
+            <button type="button" class="btn btn-default" onclick="location.href='/register'">Register now</button> &nbsp;
+            <button type="button" class="btn btn-default" onclick="location.href='/findPW'">Find password</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

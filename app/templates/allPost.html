@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+{% block content %}
+<body>
+  <h1><a>Posts</a></h1>
+  <hr> 
+  {% with messages = get_flashed_messages() %} 
+  {% if messages %}
+  <ul>
+    {% for message in messages %}
+    <div class="panel panel-danger">
+      <div class="panel-heading">Out of existence</div>
+      <div class="panel-body">{{ message }}</div>
+    </div>
+    {% endfor %}
+  </ul>
+  {% endif %} 
+  {% endwith %}
+  <h1></h1>
+  {% for f in range(item) %}
+  <form action="" method="POST" name="allpost">
+    <a href="/{{auser[f]}}_{{atitle[f]}}">
+      <font size="8">{{ atitle[f] }}</font>
+    </a>
+    <p>
+      <font size="6">{{ acontent[f] }}</font>
+    </p>
+    <p>Posted by {{ auser[f] }}&nbsp; <i>Post on: {{ atime[f] }}</i></p>
+    <hr>
+  </form>
+  {% endfor %}
+</body>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+{% block content %}
+<h1><a>User profile</a></h1>
+<hr> {% with messages = get_flashed_messages() %} 
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <div class="panel panel-danger">
+        <div class="panel-heading">Out of existence</div>
+        <div class="panel-body">{{ message }}</div>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %} 
+{% endwith %}
+<form action="" method="POST" name="profile">
+    {% if img == "." %}
+    <h2>User: {{ username }}</h2>
+    <h2>Email: {{ email }}</h2>
+        <p><i>Registered on: {{ time }}</i></p>
+        <br>
+        <p>
+            <button type="button" class="btn btn-default" onclick="location.href='/edit'">Edit profile</button>
+            <button type="button" class="btn btn-default" onclick="location.href='/removeID'">Remove account</button>
+            <input type="button" class="btn btn-default" value="Back" onClick="history.go(-1)">
+        </p>
+    {% else %}
+    <img src="{{ img }}">
+    <h2>User: {{ username }}</h2>
+    <h2>Email: {{ email }}</h2>
+    <p><i>Registered on: {{ time }}</i></p>
+        <br>
+        <p>
+            <button type="button" class="btn btn-default" onclick="location.href='/edit'">Edit profile</button>
+            <button type="button" class="btn btn-default" onclick="location.href='/removeID'">Remove account</button>
+            <input type="button" class="btn btn-default" value="Back" onClick="history.go(-1)">
+        </p>
+    {% endif %}
+    <hr>
+</form>
+{% endblock %}
